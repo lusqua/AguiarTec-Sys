@@ -1,24 +1,18 @@
-# README
+# API Sistema de gestão
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> Este projeto consiste em uma api simples de gestão com o intuito de aprender mais e praticar com o ruby e o rails, além de proporcionar um canal de gestão de clientes e computadores dentro do meu ambiente de serviço.
 
-Things you may want to cover:
+## Rotas
 
-* Ruby version
+Todo o roteamento é baseado no url /api/... tendo seus versionamentos sitados em seguida.
+Todas as rotas necessitam de authenticação para o acesso.
 
-* System dependencies
+### Clientes
 
-* Configuration
+`/api/v1/clientes ` - Retorna todos os clientes cadastrados no usuário logado.
 
-* Database creation
+`/api/v1/clientes/1 ` - Retorna o cliente referente ao id especificado.
 
-* Database initialization
+### Computers
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`/api/v1/computers/ ` - Retorna todos os computadores cadastrados no usuário logado.

@@ -1,14 +1,14 @@
-class Api::V1::ComputersController < Api::V1::ApiController
+class Api::V1::ComputerController < Api::V1::ApiController
   before_action :set_computer, only: [:show, :destroy, :update]
-  before_action :set_cliente, only: [:create, :destroy, :update]
+  before_action :set_cliente
 
   def index
-    @computers = Computer.all
+    @computers = @cliente.computer.all
     render json: @computers
   end
 
   def show
-    @computer = Computer.find(params[:id])
+    @computer = @cliente.computer.find(params[:id])
     render json: @computer
   end
 
@@ -40,7 +40,7 @@ class Api::V1::ComputersController < Api::V1::ApiController
   # Use callbacks to share common setup or constraints between actions.
 
   def set_cliente
-    @cliente = Cliente.find_by params[:cliente]
+    @cliente = Cliente.find(params[:cliente_id])
   end
 
   def set_computer

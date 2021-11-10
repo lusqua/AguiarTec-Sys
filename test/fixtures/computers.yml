@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  equipamento: MyString
+  descricao: MyString
+  defeito: MyString
+  laudo: MyString
+  cliente: one
+
+two:
+  equipamento: MyString
+  descricao: MyString
+  defeito: MyString
+  laudo: MyString
+  cliente: two

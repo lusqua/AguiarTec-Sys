@@ -1,6 +1,6 @@
 class Api::V1::ComputersController < Api::V1::ApiController
   before_action :set_computer, only: [:show, :destroy, :update]
-  before_action :set_cliente, only: [:create, :destroy, :update]
+  before_action :set_cliente, only: [:create, :update]
 
   def index
     @computers = Computer.all
@@ -8,12 +8,11 @@ class Api::V1::ComputersController < Api::V1::ApiController
   end
 
   def show
-    @computer = Computer.find(params[:id])
     render json: @computer
   end
 
   def create
-    @computer = Computer.new(computer_params.merge(cliente: @cliente))
+    @computer = Computer.new(computer_params.merge(cliente: @cliente, nome_cliente: @cliente[:name], status: "ENTRADA"))
 
     if @computer.save
       render json: @computer, status: :created
@@ -23,7 +22,6 @@ class Api::V1::ComputersController < Api::V1::ApiController
   end
 
   def update
-    @computer = Computer.find(params[:id])
     if @computer.update(computer_params)
       render json: @computer
     else
@@ -40,7 +38,7 @@ class Api::V1::ComputersController < Api::V1::ApiController
   # Use callbacks to share common setup or constraints between actions.
 
   def set_cliente
-    @cliente = Cliente.find_by params[:cliente]
+    @cliente = Cliente.find_by name: params[:computer][:cliente]
   end
 
   def set_computer
@@ -48,6 +46,6 @@ class Api::V1::ComputersController < Api::V1::ApiController
   end
 
   def computer_params
-    params.require(:computer).permit(:equipamento, :descricao, :defeito)
+    params.require(:computer).permit(:equipamento, :descricao, :defeito, :cliente)
   end
 end

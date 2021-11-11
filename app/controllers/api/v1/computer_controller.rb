@@ -13,7 +13,7 @@ class Api::V1::ComputerController < Api::V1::ApiController
   end
 
   def create
-    @computer = Computer.new(computer_params.merge(cliente: @cliente))
+    @computer = Computer.new(computer_params.merge(cliente: @cliente, nome_cliente: @cliente[:name], status: "ENTRADA"))
 
     if @computer.save
       render json: @computer, status: :created

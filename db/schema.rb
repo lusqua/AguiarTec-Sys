@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_202446) do
 
   create_table "clientes", force: :cascade do |t|
     t.string "name"
+    t.string "cpf"
     t.string "email"
     t.string "phone"
     t.text "description"
@@ -28,6 +29,8 @@ ActiveRecord::Schema.define(version: 2021_11_09_202446) do
     t.string "descricao"
     t.string "defeito"
     t.string "laudo"
+    t.string "nome_cliente"
+    t.string "status"
     t.integer "cliente_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
